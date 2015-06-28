@@ -7,7 +7,7 @@ from settings import APARTMENT_UTILITIES_PATH, RG_USERNAME, RG_PASSWORD
 
 username = RG_USERNAME
 password = RG_PASSWORD
-SAVE_PATH = APARTMENT_UTILITIES_PATH + "Garbage"
+SAVE_PATH = APARTMENT_UTILITIES_PATH + "/Garbage"
 
 login_url = "https://secure.republiconline.com:443/pkmslogin.form"
 

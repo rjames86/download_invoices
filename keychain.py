@@ -3,7 +3,6 @@ import binascii
 import subprocess
 import logging
 import getpass
-from settings import KEYCHAIN
 
 ####################################################################
 # Keychain access errors
@@ -39,8 +38,9 @@ class PasswordExists(KeychainError):
 
 
 class KeyChain(object):
-    def __init__(self):
+    def __init__(self, keychain):
         self._logger = None
+        self.KEYCHAIN = keychain
 
     @property
     def logger(self):
@@ -204,7 +204,7 @@ class KeyChain(object):
 
         """
 
-        cmd = ['security', action, '-s', service, '-a', account] + list(args) + [KEYCHAIN]
+        cmd = ['security', action, '-s', service, '-a', account] + list(args) + [self.KEYCHAIN]
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE,
                              stderr=subprocess.STDOUT)
         retcode, output = p.wait(), p.stdout.read().strip().decode('utf-8')

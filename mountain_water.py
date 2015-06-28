@@ -58,14 +58,14 @@ mw.update(login_url, fields)
 mw.update('http://myaccount.mtnwater.com/Home.aspx')
 
 transaction_table = mw.soup.find('table', {'id': 'dnn_ctr479_BillingHistory_GridView1'})
+transaction_rows = [row for row in transaction_table.findAll('tr') if not row.find('th')]
 
-downloadable_transaction_rows = [
+downloadable_transactions = [
     dict(
-        filename=format_datestring(row.find('a', text=re.compile(r'\d{1,2}/\d{1,2}/\d{2,4}')).text),
+        filename=format_datestring(row.find('a', attrs={'href': re.compile(r'^javascript')}).text),
         url=row.find('a', {'href': re.compile(r'onlinebiller')})['href']
     )
-    for row in transaction_table.findAll('tr')
-    if not row.find('th')
+    for row in transaction_rows
 ]
 
-mw.download_invoices(downloadable_transaction_rows, SAVE_PATH)
+mw.download_invoices(downloadable_transactions, SAVE_PATH)
