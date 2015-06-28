@@ -4,15 +4,12 @@
 # Slightly modified by me
 
 import cookielib
-import datetime
-# import getpass
 import os
-import sys
 import time
 import urllib
 import urllib2
 from BeautifulSoup import BeautifulSoup
-from settings import DROPBOX_DOCUMENTS, ADP_PASSWORD
+from lib import DROPBOX_DOCUMENTS, ADP_PASSWORD, ADP_USERNAME
 
 
 class PayCheckFetcher:
@@ -152,18 +149,14 @@ class PayCheckFetcher:
             soup = self.returnToBrowse(year_soup)
 
 
-def main(argv):
-    if (len(argv) != 1):
-        print "usage: python adp.py <username>"
-        return -1
+def main():
 
-    username = argv[0]
+    username = ADP_USERNAME
     password = ADP_PASSWORD
 
-    print datetime.datetime.now(), "running..."
     fetcher = PayCheckFetcher(username, password)
     fetcher.request()
 
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    main()
