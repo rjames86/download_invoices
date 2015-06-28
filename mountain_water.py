@@ -1,9 +1,6 @@
 import re
-import os
-import getpass
 
 from download_helper import GetResponseSoup, format_datestring
-from keychain import KeyChain
 from settings import APARTMENT_UTILITIES_PATH, MW_USERNAME, MW_PASSWORD
 
 SAVE_PATH = APARTMENT_UTILITIES_PATH + "/Water"

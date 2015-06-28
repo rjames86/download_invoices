@@ -1,5 +1,8 @@
 #!/usr/bin/python
 
+# Found on Github at https://github.com/rayhe/adp
+# Slightly modified by me
+
 import cookielib
 import datetime
 # import getpass
