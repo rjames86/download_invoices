@@ -1,0 +1,34 @@
+import os
+from keychain import KeyChain
+
+HOME = os.path.expanduser('~')
+
+APARTMENT_UTILITIES_PATH = HOME + "/Dropbox/Apartment"
+DROPBOX_DOCUMENTS = HOME + "/Dropbox/Documents"
+
+KEYCHAIN = HOME + "/Library/Keychains/login.keychain"
+k = KeyChain(KEYCHAIN)
+
+# Mountain Water
+MW_USERNAME = ''
+MW_PASSWORD = k.get_password(MW_USERNAME, "mountainwater")
+
+# PGE
+PGE_USERNAME = ''
+PGE_PASSWORD = k.get_password(PGE_USERNAME, "pge")
+
+# ADP
+ADP_USERNAME = ""
+ADP_PASSWORD = k.get_password(ADP_USERNAME, "adp")
+
+# Republic Garbage
+RG_USERNAME = ''
+RG_PASSWORD = k.get_password(RG_USERNAME, "republicgarbage")
+
+# NWE
+NWE_USERNAME = ''
+NWE_PASSWORD = k.get_password(NWE_USERNAME, "northwestenergy")
+
+
+PUSHOVER_USER = ""
+PUSHOVER_TOKEN = ""
