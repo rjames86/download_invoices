@@ -40,13 +40,11 @@ def main():
     # At this point, we're at the page where the invoices are listed.
     # Let's find the invoice IDs
 
-
     def clean_due_date(s):
         cleaned_up = s.strip().replace('/', '-').replace('Due: ', '')
         # now looks like MM-DD-YYYY
         month, day, year = cleaned_up.split('-')
         return "{0}-{1}-{2}".format(year, month, day)
-
 
     def invoice_info(link):
         doc_id_search = re.compile(r'viewDocument\(\'(\d+)\'')
@@ -63,7 +61,6 @@ def main():
 
     sessionHandle = rg.soup.find('input', {'name': 'sessionHandle'})['value']
     client = rg.soup.find('input', {'name': 'client'})['value']
-
 
     for invoice in doc_ids:
         fields = {
