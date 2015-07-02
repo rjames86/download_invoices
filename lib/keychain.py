@@ -220,9 +220,10 @@ class KeyChain(object):
 
 
 def add_keychain_entry():
+    from lib import KEYCHAIN
     username = raw_input("Username:")
     service_name = raw_input("Service name:")
     password = getpass.getpass("Password:")
 
-    k = KeyChain()
+    k = KeyChain(KEYCHAIN)
     k.save_password(username, password, service_name)
