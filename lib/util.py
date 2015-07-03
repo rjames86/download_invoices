@@ -10,6 +10,7 @@ class Pushover(object):
     @classmethod
     def send(cls, title, message):
         if not cls._has_valid_token():
+            print "No valid Pushover token."
             return
         conn = httplib.HTTPSConnection("api.pushover.net:443")
         conn.request(
