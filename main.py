@@ -1,6 +1,5 @@
 import pkgutil
 import os
-import datetime
 
 from lib.util import Pushover
 
@@ -13,4 +12,8 @@ Pushover.send("Statement Downloader", "running...")
 for loader, mod_name, ispkg in modules:
     loaded_mod = __import__(base_path + "." + mod_name, fromlist=[mod_name])
     print "Loading", mod_name
-    loaded_mod.main()
+    try:
+        loaded_mod.main()
+    except Exception as e:
+        print "{} failed to run".format(mod_name), e
+        continue
